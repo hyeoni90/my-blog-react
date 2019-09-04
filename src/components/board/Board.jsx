@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { bindConnects } from '../../lib/connect';
+
 import { MDBBtn } from "mdbreact";
-import Modal from "../common/Modal";
 import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
+
+import Modal from "../common/Modal";
 
 class Board extends Component {
     constructor(props) {
@@ -16,7 +19,7 @@ class Board extends Component {
     }
 
     componentDidMount() {
-
+        this.props.boardActions.fetchBoardList();
     }
 
     toggle = () => {
@@ -36,17 +39,19 @@ class Board extends Component {
                         <tr>
                             <th>#</th>
                             <th>Subject</th>
-                            <th>Contnet</th>
+                            <th>Content</th>
                             <th>Register Date</th>
                         </tr>
                     </MDBTableHead>
                     <MDBTableBody>
-                        <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
+                        {/*{boardList.map((board) =>*/}
+                        {/*    <tr key={board.id}>*/}
+                        {/*        <td>{board.id}</td>*/}
+                        {/*        <td>{board.title}</td>*/}
+                        {/*        <td>{board.content}</td>*/}
+                        {/*        <td>{board.regDate}</td>*/}
+                        {/*    </tr>*/}
+                        {/*)};*/}
                         <tr>
                             <td>2</td>
                             <td>Jacob</td>
@@ -66,4 +71,9 @@ class Board extends Component {
     }
 }
 
-export default Board;
+export default bindConnects(
+    [{
+        actionName: 'boardActions',
+        storeName: 'boardStore',
+    }]
+)(Board);

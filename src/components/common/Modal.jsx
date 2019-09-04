@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 import { MDBInput } from 'mdbreact';
 
-class ModalPage extends Component {
+class Modal extends Component {
     constructor(props) {
         super(props);
     }
@@ -26,4 +26,4 @@ class ModalPage extends Component {
     }
 }
 
-export default ModalPage;
+export default Modal;
